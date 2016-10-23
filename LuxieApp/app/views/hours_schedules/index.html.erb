@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Hours Schedules</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Days</th>
+      <th>Open</th>
+      <th>Close</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @hours_schedules.each do |hours_schedule| %>
+      <tr>
+        <td><%= hours_schedule.days %></td>
+        <td><%= hours_schedule.open %></td>
+        <td><%= hours_schedule.close %></td>
+        <td><%= link_to 'Show', hours_schedule %></td>
+        <td><%= link_to 'Edit', edit_hours_schedule_path(hours_schedule) %></td>
+        <td><%= link_to 'Destroy', hours_schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Hours schedule', new_hours_schedule_path %>

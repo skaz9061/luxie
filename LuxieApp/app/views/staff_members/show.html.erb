@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @staff_member.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @staff_member.title %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @staff_member.bio %>
+</p>
+
+<p>
+  <strong>Display order:</strong>
+  <%= @staff_member.display_order %>
+</p>
+
+<%= link_to 'Edit', edit_staff_member_path(@staff_member) %> |
+<%= link_to 'Back', staff_members_path %>

@@ -1,0 +1,1 @@
+json.partial! "hours_schedules/hours_schedule", hours_schedule: @hours_schedule

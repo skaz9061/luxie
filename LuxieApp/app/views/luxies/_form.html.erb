@@ -1,0 +1,25 @@
+<%= form_for(@luxie) do |f| %>
+  <% if @luxie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@luxie.errors.count, "error") %> prohibited this luxie from being saved:</h2>
+
+      <ul>
+      <% @luxie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :alert %><br>
+    <%= f.text_field :alert %>
+  </div>
+  <div class="field">
+    <%= f.label :promo %><br>
+    <%= f.text_field :promo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

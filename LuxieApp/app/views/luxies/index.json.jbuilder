@@ -1,0 +1,1 @@
+json.array! @luxies, partial: 'luxies/luxie', as: :luxie
