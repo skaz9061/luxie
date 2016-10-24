@@ -1,4 +1,4 @@
-<%= form_for(@service_category) do |f| %>
+<%= form_for([@luxie, @service_category]) do |f| %>
   <% if @service_category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@service_category.errors.count, "error") %> prohibited this service_category from being saved:</h2>

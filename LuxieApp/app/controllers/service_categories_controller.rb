@@ -1,6 +1,7 @@
 class ServiceCategoriesController < ApplicationController
   before_action :set_service_category, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_luxie
+  
   # GET /service_categories
   # GET /service_categories.json
   def index
@@ -24,11 +25,11 @@ class ServiceCategoriesController < ApplicationController
   # POST /service_categories
   # POST /service_categories.json
   def create
-    @service_category = ServiceCategory.new(service_category_params)
+    @service_category = @luxie.categories.new(service_category_params)
 
     respond_to do |format|
       if @service_category.save
-        format.html { redirect_to @service_category, notice: 'Service category was successfully created.' }
+        format.html { redirect_to @luxie, notice: 'Service category was successfully created.' }
         format.json { render :show, status: :created, location: @service_category }
       else
         format.html { render :new }
@@ -56,7 +57,7 @@ class ServiceCategoriesController < ApplicationController
   def destroy
     @service_category.destroy
     respond_to do |format|
-      format.html { redirect_to service_categories_url, notice: 'Service category was successfully destroyed.' }
+      format.html { redirect_to @luxie, notice: 'Service category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,7 +67,11 @@ class ServiceCategoriesController < ApplicationController
     def set_service_category
       @service_category = ServiceCategory.find(params[:id])
     end
-
+  
+    def set_luxie
+      @luxie = Luxie.find(params[:luxie_id])
+    end
+  
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_category_params
       params.require(:service_category).permit(:name, :note, :display_order)

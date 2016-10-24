@@ -21,7 +21,7 @@ class ServiceCategoriesControllerTest < ActionController::TestCase
       post :create, service_category: { display_order: @service_category.display_order, name: @service_category.name, note: @service_category.note }
     end
 
-    assert_redirected_to service_category_path(assigns(:service_category))
+    assert_redirected_to luxie_service_category_path(assigns(:service_category))
   end
 
   test "should show service_category" do
@@ -36,7 +36,7 @@ class ServiceCategoriesControllerTest < ActionController::TestCase
 
   test "should update service_category" do
     patch :update, id: @service_category, service_category: { display_order: @service_category.display_order, name: @service_category.name, note: @service_category.note }
-    assert_redirected_to service_category_path(assigns(:service_category))
+    assert_redirected_to luxie_service_category_path(assigns(:service_category))
   end
 
   test "should destroy service_category" do
@@ -44,6 +44,6 @@ class ServiceCategoriesControllerTest < ActionController::TestCase
       delete :destroy, id: @service_category
     end
 
-    assert_redirected_to service_categories_path
+    assert_redirected_to luxie_service_categories_path
   end
 end

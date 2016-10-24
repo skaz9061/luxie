@@ -5,6 +5,7 @@ class LuxiesController < ApplicationController
   # GET /luxies.json
   def index
     @luxies = Luxie.all
+    redirect_to @luxies.first
   end
 
   # GET /luxies/1

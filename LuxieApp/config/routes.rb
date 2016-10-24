@@ -2,15 +2,15 @@ Rails.application.routes.draw do
   root 'luxies#index'
 	
 	resources :luxies do
-		resources :service_categories, as: :categories do
+		resources :service_categories, path: 'categories' do
 			resources :services
 		end
 		
-		resources :staff_members, as: :staff
+		resources :staff_members, path: 'staff'
 		
-		resource :store_info, as: :info do
+		resource :store_info, path: 'info' do
 			resource :address
-			resources :hours_schedules, as: :hours
+			resources :hours_schedules, path: 'hours'
 		end
 	end
 			

@@ -1,29 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Luxies</h1>
+<h1>Luxie Attributes</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Alert</th>
-      <th>Promo</th>
-      <th colspan="3"></th>
+      <th><h2 style="text-align:left">Luxie</h2></th>
     </tr>
   </thead>
 
   <tbody>
     <% @luxies.each do |luxie| %>
       <tr>
-        <td><%= luxie.alert %></td>
-        <td><%= luxie.promo %></td>
-        <td><%= link_to 'Show', luxie %></td>
-        <td><%= link_to 'Edit', edit_luxie_path(luxie) %></td>
-        <td><%= link_to 'Destroy', luxie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><p><strong>Alert: </strong><%= luxie.alert %></p></td>
       </tr>
+      <tr>
+        <td><p><strong>Promo: </strong><%= luxie.promo %></p></td>
+      </tr>
+      <tr>
+        <td><%= link_to 'Show', luxie %> | 
+          <%= link_to 'Edit', edit_luxie_path(luxie) %></td>
+      </tr>
+        <!-- will never be deleted, main data access for website
+          <td><%= link_to 'Destroy', luxie, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Luxie', new_luxie_path %>
+<!-- There can ONLY be one...
+<%= link_to 'New Luxie', new_luxie_path %> -->

@@ -18,9 +18,9 @@
         <td><%= service_category.name %></td>
         <td><%= service_category.note %></td>
         <td><%= service_category.display_order %></td>
-        <td><%= link_to 'Show', service_category %></td>
-        <td><%= link_to 'Edit', edit_service_category_path(service_category) %></td>
-        <td><%= link_to 'Destroy', service_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', luxie_service_category_path(@luxie, service_category) %></td>
+        <td><%= link_to 'Edit', edit_luxie_service_category_path(@luxie, service_category) %></td>
+        <td><%= link_to 'Destroy', luxie_service_category_path(@luxie, service_category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Service category', new_service_category_path %>
+<%= link_to 'New Service category', new_luxie_service_category_path %>
