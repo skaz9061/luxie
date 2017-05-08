@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
-  root 'luxies#index'
+	root 'luxies#index'
+	
+	get "/login" => "sessions#new", as: "login"
+	delete "/logout" => "sessions#destroy", as: "logout"
+	
+	resources :sessions, only: [:new, :create, :destroy]
+	
+	resources :users, only: [:index, :new, :create, :edit, :update, :destroy]
 	
 	resources :luxies do
 		resources :service_categories, path: 'categories' do
@@ -11,7 +18,7 @@ Rails.application.routes.draw do
 		resource :store_info, path: 'info' do
 			resource :address
 			resources :hours_schedules, path: 'hours'
-		end
+		end	
 	end
 			
 	

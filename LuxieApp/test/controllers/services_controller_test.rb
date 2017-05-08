@@ -21,7 +21,7 @@ class ServicesControllerTest < ActionController::TestCase
       post :create, service: { description: @service.description, label: @service.label, name: @service.name, note: @service.note, price: @service.price }
     end
 
-    assert_redirected_to service_path(assigns(:service))
+    assert_redirected_to luxie_service_category_service_path(assigns(:service))
   end
 
   test "should show service" do
@@ -36,7 +36,7 @@ class ServicesControllerTest < ActionController::TestCase
 
   test "should update service" do
     patch :update, id: @service, service: { description: @service.description, label: @service.label, name: @service.name, note: @service.note, price: @service.price }
-    assert_redirected_to service_path(assigns(:service))
+    assert_redirected_to luxie_service_category_service_path(assigns(:service))
   end
 
   test "should destroy service" do
@@ -44,6 +44,6 @@ class ServicesControllerTest < ActionController::TestCase
       delete :destroy, id: @service
     end
 
-    assert_redirected_to services_path
+    assert_redirected_to luxie_service_category_services_path
   end
 end

@@ -7,6 +7,8 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module LuxieApp
+	# This Module is designed to provide acces to the client for 
+	# editing the content of the Luxie Spa and Nails website
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

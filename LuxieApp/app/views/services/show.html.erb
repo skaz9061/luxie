@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Name:</strong>
@@ -25,5 +25,5 @@
   <%= @service.description %>
 </p>
 
-<%= link_to 'Edit', edit_service_path(@service) %> |
-<%= link_to 'Back', services_path %>
+<%= link_to 'Edit', edit_luxie_service_category_service_path(@luxie, @service_category, @service) %> |
+<%= link_to 'Back', [@luxie, @service_category] %>

@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
   <strong>Name:</strong>
@@ -15,5 +15,24 @@
   <%= @service_category.display_order %>
 </p>
 
-<%= link_to 'Edit', edit_luxie_service_category_path(@luxie, @service_category) %> |
-<%= link_to 'Back', @luxie %>
+<div>
+<%= link_to 'Edit', edit_luxie_service_category_path(@luxie, @service_category) %>
+</div>
+	
+<hr style="width:50%; float: left; clear: both;">
+
+<p style="clear: both;"><strong>Services</strong></p>
+
+<ul>
+	<% @service_category.services.each do |service| %>
+	<li>
+		<%= service.name %> -- 
+		<%= link_to 'Show', [@luxie, @service_category, service] %> | 
+		<%= link_to 'Edit', edit_luxie_service_category_service_path(@luxie, @service_category, service) %> | 
+		<%= link_to 'Delete', [@luxie, @service_category, service], method: :delete, data: { confirm: 'Are you sure?' } %>
+	</li>
+	<% end %>
+	<li><%= link_to 'New Service', new_luxie_service_category_service_path(@luxie, @service_category) %></li>
+</ul>
+
+<%= link_to 'Home', @luxie %>

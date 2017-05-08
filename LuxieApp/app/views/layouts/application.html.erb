@@ -7,7 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<p id="notice"><%= notice %></p>
+	<p id="alert"><%= alert %></p>
+	<div style="float:right;">
+		<% if logged_in? %>
+			Logged in as: <%= current_user.username %> | 
+			<% if current_user.username == 'admin' %>
+				<%= link_to 'Edit Users', users_path %> | 
+			<% end %>
+			<%= link_to 'Logout', logout_path, method: :delete %>
+		<% end %>
+	</div>
 <%= yield %>
 
 </body>

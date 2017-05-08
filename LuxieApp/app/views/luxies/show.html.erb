@@ -1,20 +1,82 @@
-<p id="notice"><%= notice %></p>
-  <p>
-    <strong>Alert:</strong>
-    <%= @luxie.alert %>
-  </p>
 
-  <p>
-    <strong>Promo:</strong>
-    <%= @luxie.promo %>
-  </p>
+
+<h1><%= @luxie.info.name %></h1>
+
+<h2 style="clear: both;">Store Info</h2>
+
+<!-- Display Nested StoreInfo Attributes -->
+<p>
+	<strong>Name:</strong>
+	<%= @luxie.info.name %>
+</p>
+
+<p>
+	<strong>Phone number:</strong>
+	<%= @luxie.info.phone_number %>
+</p>
+
+<p>
+	<strong>Email:</strong>
+	<%= @luxie.info.email %>
+</p>
+
+<p>
+	<!-- Display Nested address, formatted for the US -->
+	<strong>Address:</strong>
+	<%= @luxie.info.address.formatted_us %>
+</p>
+
+<p>
+	<strong>About Us:</strong>
+	<%= @luxie.info.description %>
+</p>
+
+
+<div>
+	<%= link_to 'Edit Info', edit_luxie_store_info_path(@luxie) %>
+</div>
+
+
+
+<hr style="width:50%; float: left; clear: both;">
+
+<h2 style="clear: both;">Messages</h2>
+
+<p> <!-- an alert message, such as closed for a holiday -->
+	<strong>Alert:</strong>
+	<%= @luxie.alert %>
+</p>
+
+<p> <!-- promo message, such as 30% off services or advertising rewards card -->
+	<strong>Promo:</strong>
+	<%= @luxie.promo %>
+</p>
 <div>
   <%= link_to 'Edit Alert and Promo', edit_luxie_path(@luxie) %>
+</div>
+
+<hr style="width:50%; float: left; clear: both;">
+
+
+<!-- Display Nested Store Hours -->
+<h2 style="clear: both;">Store Hours</h2>
+
+<div>
+	<p>
+		<% @luxie.info.hours.each do |hours_schedule| %>
+			<strong><%= hours_schedule.days %>: </strong>
+			<%= hours_schedule.formatted_hours %><br>
+		<% end %>
+	</p>
+</div>
+<div>
+	<%= link_to 'Edit Store Hours', luxie_store_info_hours_schedules_path(@luxie) %>
 </div>
 <hr style="width:50%; float: left; clear: both;">
 
 
-<p style="clear: both;"><strong>Service Categories</strong></p>
+<!-- Display List of Categories -->
+<h2 style="clear: both;">Service Categories</h2>
       <ul>
 		<% @luxie.categories.each do |category| %>
 			<li>
@@ -23,7 +85,7 @@
               <%= link_to 'Edit', edit_luxie_service_category_path(@luxie, category) %> | 
               <%= link_to 'Delete', [@luxie, category], method: :delete, data: { confirm: 'Are you sure?' } %></li>
 		<% end %>
-		<%= link_to 'New Category', new_luxie_service_category_path(@luxie) %>
+		<li><%= link_to 'New Category', new_luxie_service_category_path(@luxie) %></li>
       </ul>
 
 

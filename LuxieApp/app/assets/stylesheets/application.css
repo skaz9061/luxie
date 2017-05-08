@@ -13,3 +13,50 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+	font-family: 'Tahoma', 'Ariel', sans-serif;
+	color: darkgrey;
+	background-color: white;
+	font-size: .8em;
+}
+
+input, textarea {
+	background-color: white;
+	border: 1px solid darkgrey;
+	margin: 3px;
+}
+
+strong {
+	font-weight: normal;
+	font-style: italic;
+	padding-right: 30px;
+}
+
+table strong {
+	padding-right: 2px;
+}
+
+hr {
+	background: #cfe795;
+	border: 0;
+	height: 2px;
+}
+
+h1, h2, h3, h4, h5 {
+	font-weight: normal;
+	color: #719500;
+}
+
+a:link, a:visited {
+	color:  #719500
+}
+
+#alert {
+	color: red;
+}
+
+#notice {
+	color: green;
+}
+

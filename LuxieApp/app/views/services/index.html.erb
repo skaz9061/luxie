@@ -1,6 +1,6 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Listing Services</h1>
+
+<h1><%= @service_category.name %> Services</h1>
 
 <table>
   <thead>
@@ -22,9 +22,9 @@
         <td><%= service.note %></td>
         <td><%= service.label %></td>
         <td><%= service.description %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@luxie, @service_category, service] %></td>
+        <td><%= link_to 'Edit', edit_luxie_service_category_service_path(@luxie, @service_category, service) %></td>
+        <td><%= link_to 'Destroy', [@luxie, @service_category, service], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,6 @@
 
 <br>
 
-<%= link_to 'New Service', new_service_path %>
+<%= link_to 'Home', @luxie %> | 
+<%= link_to 'Back to Category', [@luxie, @service_category] %> | 
+<%= link_to 'New Service', new_luxie_service_category_service_path %> 

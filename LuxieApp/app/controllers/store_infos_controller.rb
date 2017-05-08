@@ -1,6 +1,7 @@
 class StoreInfosController < ApplicationController
+	before_action :set_luxie
   before_action :set_store_info, only: [:show, :edit, :update, :destroy]
-
+	
   # GET /store_infos
   # GET /store_infos.json
   def index
@@ -25,10 +26,13 @@ class StoreInfosController < ApplicationController
   # POST /store_infos.json
   def create
     @store_info = StoreInfo.new(store_info_params)
-
+		@luxie.info = @store_info
+		
     respond_to do |format|
       if @store_info.save
-        format.html { redirect_to @store_info, notice: 'Store info was successfully created.' }
+				@luxie.save
+				
+        format.html { redirect_to @luxie, notice: 'Store info was successfully created.' }
         format.json { render :show, status: :created, location: @store_info }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class StoreInfosController < ApplicationController
   def update
     respond_to do |format|
       if @store_info.update(store_info_params)
-        format.html { redirect_to @store_info, notice: 'Store info was successfully updated.' }
+        format.html { redirect_to @luxie, notice: 'Store info was successfully updated.' }
         format.json { render :show, status: :ok, location: @store_info }
       else
         format.html { render :edit }
@@ -56,7 +60,7 @@ class StoreInfosController < ApplicationController
   def destroy
     @store_info.destroy
     respond_to do |format|
-      format.html { redirect_to store_infos_url, notice: 'Store info was successfully destroyed.' }
+      format.html { redirect_to @luxie, notice: 'Store info was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -64,11 +68,15 @@ class StoreInfosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_store_info
-      @store_info = StoreInfo.find(params[:id])
+      @store_info = @luxie.info || @luxie.info.new
     end
 
+		def set_luxie
+			@luxie = Luxie.find(params[:luxie_id])
+		end
+	
     # Never trust parameters from the scary internet, only allow the white list through.
     def store_info_params
-      params.require(:store_info).permit(:name, :phone_number, :email, :description)
+      params.require(:store_info).permit(:name, :phone_number, :email, :description, address_attributes: [:id, :luxie_id, :store_info_id, :street_address, :city, :state, :zip])
     end
 end

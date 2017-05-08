@@ -1,4 +1,5 @@
-<%= form_for(@hours_schedule) do |f| %>
+<!-- @path is defined in controller, based on whether it is a new action or an edit action -->
+<%= form_for([@luxie, @hours_schedule], :url => @path) do |f| %>
   <% if @hours_schedule.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@hours_schedule.errors.count, "error") %> prohibited this hours_schedule from being saved:</h2>
